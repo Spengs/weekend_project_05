@@ -15,7 +15,7 @@
   <div class="col-md-6">
   </div>
   <div class="col-md-6">
-    <h2>{{cat.name.$t}}</h2> <button ng-click="addFavorite()">Favorite</button>
+    <h2>{{cat.name.$t}}</h2> <button ng-click="addFavorite(cat.name.$t, cat.description.$t, cat.media.photos.photo[2].$t)">Favorite</button>
     <p>{{cat.description.$t}}</p>
     <img ng-src="{{cat.media.photos.photo[2].$t}}" />
   </div>

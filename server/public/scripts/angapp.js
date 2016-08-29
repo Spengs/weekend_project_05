@@ -1,5 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
+
 myApp.config(['$routeProvider', function($routeProvider){
   $routeProvider.
     when('/home', {
@@ -51,6 +52,7 @@ myApp.config(['$routeProvider', function($routeProvider){
 myApp.controller("homeController", ["$scope", "$http", function($scope, $http) {
   console.log("working");
   $scope.animalTypes = ["hi", "hello"];
+  $scope.favorites = 0;
 
   // var key = 'dd1d2b40c2b11d3d395a50a9543d819f';
   // var baseURL = 'http://api.petfinder.com/';
@@ -137,6 +139,29 @@ myApp.controller("catController", ["$scope", "$http", function($scope, $http) {
 
     });
 
+    $scope.addFavorite = function(name, description, photo){
+      if(name == undefined){
+        name= "unkown";
+      }
+      if(description == undefined){
+        description = "no description";
+      }
+      if(photo == undefined){
+        photo = "no photo";
+      }
+      var pet = {
+        name: name,
+        description: description.substring(0, 100),
+        photo: photo,
+      };
+      $http({
+        method: 'POST',
+        url: '/pets',
+        data: pet,
+      }).then(function (response){
+        console.log("works!");
+      });
+    }
 }]);
 
   myApp.controller("dogController", ["$scope", "$http", function($scope, $http) {
@@ -160,28 +185,9 @@ myApp.controller("catController", ["$scope", "$http", function($scope, $http) {
 
   }]);
 
-//     myApp.controller("favoritesController", ["$scope", "$http", function($scope, $http) {
-//       var key = 'dd1d2b40c2b11d3d395a50a9543d819f';
-//       var baseURL = 'http://api.petfinder.com/';
-//
-//
-//         var query = baseURL + 'pet.getRandom';
-//         query += '?key=' + key;
-//         query += '&animal=smallfurry';
-//         query += '&output=basic';
-//         query += '&format=json';
-//
-//         console.log('query: ', query);
-//
-//         var request = encodeURI(query) + '&callback=JSON_CALLBACK';
-//
-//         $http.jsonp(request).then(function(response) {
-//           $scope.small = response.data.petfinder.pet;
-//
-//         });
-//
-//
-// }]);
+    myApp.controller("favoritesController", ["$scope", "$http", function($scope, $http) {
+      console.log("favorites works");
+}]);
 
 myApp.controller("horseController", ["$scope", "$http", function($scope, $http) {
   console.log("working")
@@ -271,3 +277,7 @@ myApp.controller("smallfurryController", ["$scope", "$http", function($scope, $h
     });
 
 }]);
+
+function addFavorite() {
+  $scope.favorites = $scope.favorites += 1;
+};
