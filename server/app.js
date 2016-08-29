@@ -5,9 +5,11 @@ var bodyParser = require('body-parser');
 
 var pets = require('./routes/pets.js');
 
-app.use('/pets', pets)
-
 app.use(bodyParser.json());
+
+app.use('/pets', pets);
+
+
 
 app.set('port', (process.env.PORT || 5000));
 

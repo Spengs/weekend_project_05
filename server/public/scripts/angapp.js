@@ -140,20 +140,21 @@ myApp.controller("catController", ["$scope", "$http", function($scope, $http) {
     });
 
     $scope.addFavorite = function(name, description, photo){
-      if(name == undefined){
-        name= "unkown";
-      }
-      if(description == undefined){
-        description = "no description";
-      }
-      if(photo == undefined){
-        photo = "no photo";
-      }
+      // if(name == undefined){
+      //   name= "unkown";
+      // }
+      // if(description == undefined){
+      //   description = "no description";
+      // }
+      // if(photo == undefined){
+      //   photo = "no photo";
+      // }
       var pet = {
         name: name,
         description: description.substring(0, 100),
-        photo: photo,
+        photo: photo
       };
+      console.log(pet);
       $http({
         method: 'POST',
         url: '/pets',
