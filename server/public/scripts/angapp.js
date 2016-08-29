@@ -4,7 +4,7 @@ myApp.config(['$routeProvider', function($routeProvider){
   $routeProvider.
     when('/home', {
       templateUrl: '/views/partials/home.html',
-      controller: 'HomeController'
+      controller: 'homeController'
     }).
     when('/barnyard', {
       templateUrl: '/views/partials/barnyard.html',
@@ -49,25 +49,27 @@ myApp.config(['$routeProvider', function($routeProvider){
 
 
 myApp.controller("homeController", ["$scope", "$http", function($scope, $http) {
-  console.log("working")
-  var key = 'dd1d2b40c2b11d3d395a50a9543d819f';
-  var baseURL = 'http://api.petfinder.com/';
+  console.log("working");
+  $scope.animalTypes = ["hi", "hello"];
 
-
-    var query = baseURL + 'pet.getRandom';
-    query += '?key=' + key;
-    query += '&animal=cat';
-    query += '&output=basic';
-    query += '&format=json';
-
-    console.log('query: ', query);
-
-    var request = encodeURI(query) + '&callback=JSON_CALLBACK';
-
-    $http.jsonp(request).then(function(response) {
-      $scope.cat = response.data.petfinder.pet;
-
-    });
+  // var key = 'dd1d2b40c2b11d3d395a50a9543d819f';
+  // var baseURL = 'http://api.petfinder.com/';
+  //
+  //
+  //   var query = baseURL + 'pet.getRandom';
+  //   query += '?key=' + key;
+  //   query += '&animal=cat';
+  //   query += '&output=basic';
+  //   query += '&format=json';
+  //
+  //   console.log('query: ', query);
+  //
+  //   var request = encodeURI(query) + '&callback=JSON_CALLBACK';
+  //
+  //   $http.jsonp(request).then(function(response) {
+  //     $scope.cat = response.data.petfinder.pet;
+  //
+  //   });
 
 }]);
 
@@ -210,7 +212,7 @@ myApp.controller("horseController", ["$scope", "$http", function($scope, $http) 
 
       var query = baseURL + 'pet.getRandom';
       query += '?key=' + key;
-      query += '&animal=dog';
+      query += '&animal=pig';
       query += '&output=basic';
       query += '&format=json';
 
