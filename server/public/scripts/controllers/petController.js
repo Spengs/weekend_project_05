@@ -1,39 +1,40 @@
 myApp.controller('PetsController', ['$scope', '$http',
 function ($scope, $http) {
-  console.log('pets');
   $scope.petTypes = [
     {
-      name: 'Barn Yard',
-      type: 'barnyard',
+      petName: 'Barn Yard',
+      petType: 'barnyard',
    },
    {
-     name: 'Birds',
-     type: 'bird',
+     petName: 'Birds',
+     petType: 'bird',
   },
   {
-    name: 'Cats',
-    type: 'cat',
+    petName: 'Cats',
+    petType: 'cat',
   },
    {
-     name: 'Dogs',
-     type: 'dog',
+     petName: 'Dogs',
+     petType: 'dog',
   },
   {
-    name: 'Horses',
-    type: 'horse',
+    petName: 'Horses',
+    petType: 'horse',
   },
   {
-    name: 'Pigs',
-    type: 'pig',
+    petName: 'Pigs',
+    petType: 'pig',
   },
   {
-    name: 'Reptiles',
-    type: 'reptile',
+    petName: 'Reptiles',
+    petType: 'reptile',
   },
   {
-    name: 'Small Furrys',
-    type: 'smallfurry',
+    petName: 'Small Furrys',
+    petType: 'smallfurry',
   }
 ];
-console.log($scope.petTypes[0].name);
+  $scope.petLog = function () {
+    console.log(this.pets.petType);
+  }
 }]);
