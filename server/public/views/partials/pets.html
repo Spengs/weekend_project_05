@@ -1,1 +1,7 @@
 <h1>Hi</h1>
+<div class="dropdown">
+  <button class="dropbtn">Find A Pet</button>
+  <div class="dropdown-content" ng-model="petTypes">
+    <a href="#" ng-repeat="pets in petTypes">{{petTypes[$index].name}}</a>
+  </div>
+</div>
