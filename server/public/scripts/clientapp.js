@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
-myApp.config(['$routeProvider', function ($routeProvider) {
+myApp.config(['$routeProvider', '$sceDelegateProvider', function ($routeProvider, $sceDelegateProvider) {
   $routeProvider
     .when('/pets', {
       templateUrl: 'views/partials/pets.html',
@@ -13,4 +13,9 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     .otherwise({
       redirectTo: '/pets',
     });
+  $sceDelegateProvider
+  .resourceUrlWhitelist([
+    'self',
+    'http://api.petfinder.com/**'
+  ]);
 }]);
