@@ -1,3 +1,17 @@
+/*-------PETS VIEW-------*/
+.petContainer {
+  margin-left: 185px;
+  margin-bottom: 100px;
+}
+
+.petsDescription {
+  display: inline-flex;
+}
+
+
+
+
+/*-------DROPDOWN-------*/
 .dropbtn {
     background-color: #4CAF50;
     color: white;
@@ -32,6 +46,7 @@
   background-color: blue;
   color: white;
   cursor: pointer;
+
 }
 
 .dropdown:hover .dropdown-content {
@@ -40,4 +55,34 @@
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+/*-------NAV BAR-------*/
+ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+  float:left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
 }

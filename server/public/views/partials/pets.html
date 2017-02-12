@@ -1,4 +1,3 @@
-<h1>Hi</h1>
 <div class="dropdown">
   <button class="dropbtn">Find A Pet</button>
   <div class="dropdown-content" ng-model="petTypes">
@@ -6,10 +5,10 @@
   </div>
 </div>
 
-<div>
-  <h2>Name: {{returnedPet.name.$t}}</h2>
-  <p>
+<div class="petContainer">
+  <h2 class="petName">Name: {{returnedPet.name.$t}}</h2>
+  <img ng-src="{{returnedPet.media.photos.photo[2].$t}}" />
+  <p class="petDescription">
     Description: {{returnedPet.description.$t}}
   </p>
-  <img ng-src="{{returnedPet.media.photos.photo[2].$t}}" />
 </div>

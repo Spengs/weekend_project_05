@@ -1,5 +1,5 @@
 myApp.controller('PetsController', ['$scope', '$http', '$sce',
-function ($scope, $http, $sce) {
+ function ($scope, $http, $sce) {
   $scope.returnedPet = '';
   $scope.petTypes = [
     { petName: 'Barn Yard', petType: 'barnyard' },
@@ -19,8 +19,6 @@ function ($scope, $http, $sce) {
 
     var key = 'dd1d2b40c2b11d3d395a50a9543d819f';
     var baseURL = 'http://api.petfinder.com/';
-
-
     var query = baseURL + 'pet.getRandom';
         query += '?key=' + key;
         query += '&animal=' + $scope.animalType;
