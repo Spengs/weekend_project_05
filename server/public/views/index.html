@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pet Finder Web App</title>
-    <script type="text/javascript" src="/vendor/angular.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular-route.min.js"></script>
-
-    <script type="text/javascript" src="/scripts/angapp.js"></script>
-
-    <link rel="stylesheet", href="/styles/style.css" />
-
+    <meta charset="utf-8">
+    <title>PetFinder</title>
   </head>
-
   <body ng-app="myApp">
+    <h1>Hello</h1>
+    <div ng-include="'/views/partials/topNav.html'">
+
+    </div>
     <main ng-view>
 
     </main>
+
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script type="text/javascript" src="./vendors/angular.min.js"></script>
+    <script type="text/javascript" src="./vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="./scripts/clientapp.js"></script>
+    <script type="text/javascript" src="./scripts/controllers/favoritesController.js"></script>
+    <script type="text/javascript" src="./scripts/controllers/petController.js"></script>
+    <script type="text/javascript" src="./scripts/controllers/navController.js"></script>
+
 
   </body>
 </html>

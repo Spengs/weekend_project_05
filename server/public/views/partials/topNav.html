@@ -1,0 +1,10 @@
+<div ng-controller="NavController as nav">
+  <ul>
+    <li ng-class="{active: nav.isTabSelected('pets')}">
+      <a href="#!pets" ng-click="nav.setTab('pets')">Pets</a>
+    </li>
+    <li ng-class="{active: nav.isTabSelected('favorites')}">
+      <a href="#!favorites" ng-click="nav.setTab('favorites')">Favorites</a>
+    </li>
+  </ul>
+</div>
