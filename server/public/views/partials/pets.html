@@ -7,6 +7,7 @@
 
 <div class="petContainer">
   <h2 class="petName">Name: {{returnedPet.name.$t}}</h2>
+  <button class="favButton" ng-click="addFavorite()">Add Favorite</button>
   <img ng-src="{{returnedPet.media.photos.photo[2].$t}}" />
   <p class="petDescription">
     Description: {{returnedPet.description.$t}}

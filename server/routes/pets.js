@@ -1,33 +1,71 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/Omicron';
+var connection = 'postgres://localhost:5432/Omicron';
 
-router.post('/', function(req, res) {
-    var pet = req.body;
-    console.log(pet);
-    pg.connect(connectionString, function(err, client, done) {
-        if (err) {
-            console.log("error");
-            res.sendStatus(500);
-        };
-        client.query('INSERT INTO pets(name, description, image') +
-            "VALUES($1, $2, $3)", [pet.name, pet.description, pet.photo],
-            function(err, result) {
-                done();
-                if (err) {
-                    console.log('broke');
-                    res.sendStatus(500);
-                } else {
-                    res.sendStatus(200);
-                }
-            };
+router.get('/count', function(req, res) {
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+    }
+    client.query('SELECT COUNT(id) as count FROM pets',
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log('query error:', err);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows[0]);
+        }
     });
+  });
 });
 
-// router.get('/', function(req, res){
-//
-// })
+// save favorite
+router.post('/', function(req, res) {
+  var favorite = req.body;
+  console.log('fav:', favorite);
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+    }
+    client.query('INSERT INTO pets ' +
+    ' (id, name, description, image)' +
+    ' VALUES($1, $2, $3, $4)',
+    [favorite.petID, favorite.petName, favorite.description, favorite.image],
+    function(err, result) {
+      done();
+
+      if(err) {
+        console.log('query error:', err);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(201);
+      }
+    });
+  });
+});
+
+// get all favorite data
+router.get('/', function(req, res) {
+  pg.connect(connection, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+    }
+    client.query('SELECT * FROM pets',
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log('query error:', err);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+    });
+  });
+});
 
 
 
